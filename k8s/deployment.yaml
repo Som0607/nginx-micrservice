@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: Som0607/nginx-microservice:latest
+        image: som0607/nginx-microservice:latest
         ports:
         - containerPort: 80
