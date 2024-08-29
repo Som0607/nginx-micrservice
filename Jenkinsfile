@@ -28,7 +28,7 @@ pipeline {
         }
         stage('Deploy to Minikube') {
             steps {
-                withKubeConfig([credentialsId: 'kubeconfig', serverUrl: 'https://192.168.112.2:8443']) {
+                withKubeConfig([credentialsId: 'kubeconfig', contextName: 'minikube-microjen', serverUrl: 'https://192.168.112.2:8443']) {
                     sh 'kubectl apply -f k8s/deployment.yaml'
                     sh 'kubectl apply -f k8s/service.yaml'
                 }
