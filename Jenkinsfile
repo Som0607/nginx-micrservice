@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                git 'https://github.com/Som0607/nginx-micrservice.git'
+                git branch: 'main', url: 'https://github.com/Som0607/nginx-micrservice.git'
             }
         }
         stage('Build Docker Image') {
