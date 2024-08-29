@@ -28,10 +28,12 @@ pipeline {
         }
         stage('Deploy to Minikube') {
             steps {
-                withKubeConfig([kubeConfigPath: KUBE_CONFIG_PATH, contextName: 'microjen']) {
+                script {
+                    env.KUBECONFIG = KUBE_CONFIG_PATH
+                    sh 'kubectl config use-context microjen'
                     sh 'kubectl apply -f k8s/deployment.yaml'
                     sh 'kubectl apply -f k8s/service.yaml'
-                }
+               }
             }
         }
     }
